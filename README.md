@@ -8,6 +8,7 @@ Simple chronometer for exercising. Developed with React 16.13.1 .
 * Intervals
 
 ## Installation
+Install the modules with
 ```
 npm install
 ```
