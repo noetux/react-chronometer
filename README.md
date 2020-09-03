@@ -1,5 +1,5 @@
 # React-Chronometer
-Simple chronometer for exercising. Developed with React 16.13.1 .
+Simple chronometer for exercising. Developed in React 16.13.1 .
 
 ## Functions
 * Chronometer
