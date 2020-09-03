@@ -1,4 +1,4 @@
-# react-chronometer
+# React Chronometer
 Simple chronometer for exercising.
 
 ## Functions
