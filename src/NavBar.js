@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Container, Grid, Header, Icon, Menu } from "semantic-ui-react";
+import { Button, Container, Grid, Icon, Menu } from "semantic-ui-react";
 
 export const NavBar = () => {
   const [dropdownMenuStyle, setDropdownMenuStyle] = useState({

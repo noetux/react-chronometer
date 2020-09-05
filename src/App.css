@@ -56,6 +56,28 @@ p.lead {
   display: table;
 }
 
+.controls {
+  /* width: 50%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: darkcyan; */
+}
+
+.control-button {
+  /* width: 20%; */
+  /* height: 50px; */
+  /* margin: 5% auto; */
+  /* left: 25%; */
+  /* position: relative; */
+  /* left: 50%; */
+  /* -ms-transform: translate(-50%, -50%); */
+  /* transform: translate(-50%, -50%); */
+  /* position: relative; */
+  display: inline-block;
+  /* background-color: darkred; */
+}
+
 .progress-bar, .status-container {
   width: 100%;
   height: 100%;
