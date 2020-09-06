@@ -13,9 +13,16 @@ export const ChronometerPage = () => {
     const [time, setTime] = useState(0);
     const [clockState, setClockState] = useState(clockStates.STOP);
     const [toogleRestart, setToogleRestart] = useState(true);
-    const [isRunning, setIsRunning] = useState(false);
     const interval = useRef(null);
     const circle = useRef(null);
+
+    function removeInterval(progress) {
+        //if(interval.current == null) return false;
+        clearInterval(interval.current);
+        interval.current = null;
+        circle.current.animate(progress);
+        return true;
+    }
 
     useEffect(() => {
         circle.current = new Circle("#progress", {
@@ -39,27 +46,19 @@ export const ChronometerPage = () => {
                 }, 1000);
                 break;
             case clockStates.PAUSE:
-                if(interval.current == null) return;
-                clearInterval(interval.current);
-                interval.current = null;
-                circle.current.animate(0);
+                removeInterval(0);
                 break;
             case clockStates.STOP:
                 setTime(0);
-                if(interval.current == null) return;
-                clearInterval(interval.current);
-                interval.current = null;
-                circle.current.animate(0);
+                removeInterval(0);
                 break;
             case clockStates.RESTART:
                 setTime(0);
-                if(interval.current == null) return;
-                clearInterval(interval.current);
-                interval.current = null;
-                circle.current.animate(1);
-                interval.current = setInterval(() => {
-                    setTime(time => time + 1);
-                }, 1000);
+                if(removeInterval(1)){
+                    interval.current = setInterval(() => {
+                        setTime(time => time + 1);
+                    }, 1000);
+                }
                 break;
         }
     }, [clockState, toogleRestart])
@@ -81,13 +80,20 @@ export const ChronometerPage = () => {
         setToogleRestart(!toogleRestart);
     }
 
+    function padTime(time){
+        return time.toString().padStart(2, '0');
+    }
+
+    const minutes = padTime(Math.floor(time / 60));
+    const seconds = padTime(time - minutes * 60);
+
     return (
         <div className="workspace">
         <h1 className="page-title">Chronometer</h1>
         <div className="clock">
             <div className="progress-bar" id="progress"></div>
             <div className="status-container">
-                <div className="status"><p>{time}</p></div>
+            <div className="status"><p>{minutes}:{seconds}</p></div>
             </div>
         </div>
         <div className="controls">
